@@ -36,8 +36,14 @@ CREATE POLICY "profiles_admin_all"
 -- ============================================================
 CREATE POLICY "inspections_technician_own"
   ON inspections FOR ALL
-  USING (technician_id = auth.uid())
-  WITH CHECK (technician_id = auth.uid());
+  USING (
+    technician_id = auth.uid()
+    AND EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND is_active = TRUE)
+  )
+  WITH CHECK (
+    technician_id = auth.uid()
+    AND EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND is_active = TRUE)
+  );
 
 CREATE POLICY "inspections_admin_all"
   ON inspections FOR ALL

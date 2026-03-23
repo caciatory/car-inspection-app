@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import LogoutButton from '@/components/auth/LogoutButton'
@@ -27,23 +28,23 @@ export default async function DashboardLayout({
           <p className="text-white/70 text-sm mt-1">{profile?.full_name}</p>
         </div>
         <nav className="flex-1 p-4 space-y-1">
-          <a href="/dashboard" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
+          <Link href="/dashboard" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
             Dashboard
-          </a>
-          <a href="/inspections" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
+          </Link>
+          <Link href="/inspections" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
             Inspeções
-          </a>
+          </Link>
           {profile?.role === 'super_admin' && (
             <>
               <div className="pt-4 pb-2">
                 <p className="text-xs font-semibold text-gray-400 uppercase px-3">Admin</p>
               </div>
-              <a href="/admin" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
+              <Link href="/admin" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
                 Dashboard Admin
-              </a>
-              <a href="/admin/employees" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
+              </Link>
+              <Link href="/admin/employees" className="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors min-h-[44px]">
                 Funcionários
-              </a>
+              </Link>
             </>
           )}
         </nav>
