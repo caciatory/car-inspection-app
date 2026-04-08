@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Prevenir zoom automático em inputs no iOS */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  /* Box sizing global */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Prevenir scroll horizontal acidental */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+}
